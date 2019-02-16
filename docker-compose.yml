@@ -1,0 +1,20 @@
+version: '2'
+services:
+  server:
+    build: .
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:4003"
+    depends_on:
+      - mysql-db
+    environment:
+      DB_HOST: mysql-db
+  mysql-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: 2pc
+    ports:
+      - "3306:3306"

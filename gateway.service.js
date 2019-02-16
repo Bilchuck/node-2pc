@@ -18,6 +18,7 @@ app.post('/pay_and_ship', async (req, res) => {
   let payResult, shipResult;
   try {
     [payResult, shipResult] = await Promise.all(preparePromises);
+    console.log('ALL PREPARED')
   } catch (error) {
     console.error(error);
     const abortPromises = [

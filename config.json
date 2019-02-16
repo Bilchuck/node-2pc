@@ -6,7 +6,7 @@
     "dialect": "mysql",
     "host": "localhost",
     "port": 3306,
-    "database": "payment_db",
+    "database": "2pc",
     "username": "root",
     "password": "secret"
   },
@@ -14,7 +14,7 @@
     "dialect": "mysql",
     "host": "localhost",
     "port": 3306,
-    "database": "shipping_db",
+    "database": "2pc",
     "username": "root",
     "password": "secret"
   }

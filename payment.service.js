@@ -5,7 +5,10 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const sequelize = new Sequelize(config.PAYMENT_DB);
+const sequelize = new Sequelize({
+  ...config.PAYMENT_DB,
+  host: process.env.DB_HOST,
+});
 
 const start = async () => {
   await sequelize.sync();
@@ -27,6 +30,7 @@ const start = async () => {
       transactions[transaction.id] = transaction;
       res.send({ success: true, id: transaction.id });
     } catch (error) {
+      console.error(error);
       res.send({ success: false, error });
     }
   });
